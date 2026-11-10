@@ -36,6 +36,8 @@ npm run dev
 
 Mở [http://localhost:5173](http://localhost:5173).
 
+Để mở từ điện thoại hoặc máy khác cùng Wi-Fi, chạy `ipconfig`, tìm dòng `IPv4 Address`, rồi truy cập `http://IP_CUA_MAY:5173`. Nếu Windows hỏi quyền Firewall, chọn **Allow access** cho mạng riêng.
+
 ## Kiểm tra Telegram
 
 Khi ứng dụng đang chạy, mở PowerShell khác:

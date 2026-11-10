@@ -38,6 +38,13 @@ npm start
 
 Từ máy của bạn truy cập `http://IP_VPS:8787`. Nếu không vào được, mở cổng 8787 trong firewall của VPS hoặc dùng Nginx reverse proxy.
 
+Ví dụ mở cổng bằng UFW:
+
+```bash
+sudo ufw allow 8787/tcp
+sudo ufw status
+```
+
 ## Kiểm tra Telegram
 
 ```bash

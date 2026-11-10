@@ -12,6 +12,7 @@ dotenv.config({ path: ['.env.local', '.env'] })
 
 const app = express()
 const port = Number(process.env.PORT || 8787)
+const host = process.env.HOST || '0.0.0.0'
 const config = {
   baseUrl: process.env.JAYDEV_API_BASE_URL || 'https://locket.jayteam.click',
   apiKey: process.env.JAYDEV_API_KEY || '',
@@ -434,11 +435,15 @@ app.post('/api/telegram/test', async (_request, response) => {
   }
 })
 
-const currentDirectory = path.dirname(fileURLToPath(import.meta.url))
-const clientDirectory = path.resolve(currentDirectory, '../dist')
-app.use(express.static(clientDirectory))
-app.get('/{*path}', (_request, response) => response.sendFile(path.join(clientDirectory, 'index.html')))
+if (!process.env.VERCEL) {
+  const currentDirectory = path.dirname(fileURLToPath(import.meta.url))
+  const clientDirectory = path.resolve(currentDirectory, '../dist')
+  app.use(express.static(clientDirectory))
+  app.get('/{*path}', (_request, response) => response.sendFile(path.join(clientDirectory, 'index.html')))
 
-app.listen(port, () => {
-  console.log(`JayDev portal API đang chạy tại http://localhost:${port}`)
-})
+  app.listen(port, host, () => {
+    console.log(`JayDev portal API đang chạy tại http://${host}:${port}`)
+  })
+}
+
+export default app
