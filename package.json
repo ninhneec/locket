@@ -1,0 +1,33 @@
+{
+  "name": "jaydev-ctv-portal",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c green,cyan \"tsx watch server/index.ts\" \"vite\"",
+    "dev:web": "vite",
+    "dev:api": "tsx watch server/index.ts",
+    "build": "tsc -b && tsc -p server/tsconfig.json && vite build",
+    "start": "node dist-server/index.js",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --pretty false && tsc -p server/tsconfig.json --noEmit --pretty false"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.5",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  }
+}
+
